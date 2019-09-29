@@ -1,0 +1,12 @@
+{
+  "p1" : {
+    "name": "Ira",
+    "photo":  "https://cdn4.iconfinder.com/data/icons/artificial-intelligence-63/100/all2_01-01-64.png",
+    "age":  33
+  },
+  "p2" : {
+    "name": "Dima",
+    "photo":  "https://cdn4.iconfinder.com/data/icons/artificial-intelligence-63/100/all2_01-03-64.png",
+    "age":  34
+  }
+}

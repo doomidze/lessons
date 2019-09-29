@@ -1,0 +1,11 @@
+<div class="block">
+	<div class="block-content">
+		block 1
+	</div>
+</div>
+<button id="loadNext" onclick="nextLoad()">load next block</button>
+<script>
+	function nextLoad() {
+		$(".blocks").load("ajaxcode/block2.html")
+	}
+</script>
