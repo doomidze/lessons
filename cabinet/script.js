@@ -18,7 +18,7 @@ function main() {
     request.send();
 
     const data = JSON.parse(request.response);
-    console.log(data);
+    //console.log(data);
 }
 
 

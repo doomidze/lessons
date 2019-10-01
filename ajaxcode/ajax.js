@@ -9,6 +9,8 @@ $(document).ready(function () {
 });
 
 
+// ------- jQuery ---------
+
 //get response from server
 function ajaxF() {
 	console.log("click");
@@ -77,3 +79,75 @@ function ajaxLoad() {
 }
 
 
+
+
+const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+const method = 'GET';
+const isAsync = false;
+
+main5();
+
+function main2() {
+	const params = (method, url);
+	$.ajax(params)
+		.done(data => {
+			data = JSON.parse(data);
+			console.log(data);
+		});
+}
+
+// асинхронная функция(код будет выполнятся построчно)
+async function main3() {
+	const params = (method, url);
+
+	//асинхронный запрос(ждем пока выполнится функция)
+	const request = await $.ajax(params);
+
+	const data = JSON.parse(request);
+	console.log(data);
+}
+
+// ------- javascript ---------
+
+function main() {
+	const request = new XMLHttpRequest();
+	request.open(method,url, isAsync);
+	request.send();
+
+	const data = JSON.parse(request.response);
+	console.log(data);
+}
+
+function main4() {
+	// метод по-умолчанию get
+	const request = fetch(url);
+
+	const jsonStream = request.then(responce => {
+		return responce.json();
+	}).catch(err => {
+		console.log(err)
+	});
+
+	jsonStream.then(data => {
+		console.log(data);
+	}).catch(err => {
+		console.log(err)
+	});
+}
+
+// тоже самое только сокращенно
+function main5() {
+	// создаем канал(поток)
+	// Поток - это цепочка функция, которые вызываются последовательно друг за другом и аргумент каждой следующей функции является результатом предыдущей
+	fetch(url)
+		// нам возвращается promise
+		// что делать с данными
+		// получить данные и конвертировать их в json
+	// если без фигурных скобок, то это понимается как return
+		.then(responce => responce.json() )
+		// вывести их в консоли
+		.then(data => console.log(data) )
+		.catch(err => {
+		console.log(err)
+	});
+}
